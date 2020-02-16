@@ -1,0 +1,19 @@
+{
+  "name": "Plato",
+  "description": "Tool to generate random points that gradient-descent into a platonic solid",
+  "lang": "en-US",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#d50000",
+  "background_color": "#d50000",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

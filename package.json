@@ -1,0 +1,59 @@
+{
+  "name": "plato",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tool to generate random points that gradient-descent into a platonic solid",
+  "bugs": "https://github.com/4cm4k1/plato/issues",
+  "repository": "https://github.com/4cm4k1/plato",
+  "license": "MIT - Hippocratic",
+  "author": "Anthony Maki (https://anthony.codes) <4cm4k1@gmail.com>",
+  "contributors": [
+    "Anthony Maki (https://anthony.codes) <4cm4k1@gmail.com>"
+  ],
+  "scripts": {
+    "analyze": "ANALYZE=true yarn build",
+    "build": "next build",
+    "dev": "next",
+    "now-build": "next build",
+    "start": "next start",
+    "prettier": "prettier {*,**/*}.{html,js,json,jsx,md,mdx,ts,tsx} --write",
+    "type-check": "tsc"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "dependencies": {
+    "next": "^9.2.2-canary.21",
+    "preact": "^10.3.2",
+    "preact-render-to-string": "^5.1.4",
+    "react": "github:preact-compat/react#1.0.0",
+    "react-dom": "github:preact-compat/react-dom#1.0.0",
+    "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1"
+  },
+  "devDependencies": {
+    "@mdx-js/loader": "^1.5.6-alpha.0",
+    "@next/bundle-analyzer": "^9.2.2-canary.21",
+    "@next/mdx": "^9.2.2-canary.21",
+    "@types/node": "^13.7.1",
+    "@types/plotly.js": "^1.44.28",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-plotly.js": "^2.2.4",
+    "@zeit/next-source-maps": "^0.0.4-canary.1",
+    "husky": "^4.2.3",
+    "modern-normalize": "^0.6.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-offline": "^5.0.0",
+    "plotly.js": "^1.52.2",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "react-plotly.js": "^2.4.0",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6"
+  },
+  "engines": {
+    "node": ">=12.x"
+  }
+}

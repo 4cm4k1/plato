@@ -1,0 +1,12 @@
+{
+  "github": {
+    "autoAlias": true,
+    "autoJobCancelation": true,
+    "enabled": true,
+    "silent": false
+  },
+  "public": true,
+  "regions": ["all"],
+  "scope": "4cm4k1",
+  "version": 2
+}
