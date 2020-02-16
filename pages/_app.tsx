@@ -1,6 +1,8 @@
 // libraries
-// @ts-ignore
-import('preact/debug');
+if (process.env.NODE_ENV === 'development') {
+  // @ts-ignore
+  import('preact/debug');
+}
 // types
 import { AppProps } from 'next/app';
 import { FunctionalComponent } from 'preact';
