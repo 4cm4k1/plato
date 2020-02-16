@@ -53,6 +53,9 @@
     "typescript": "^3.7.5",
     "webpack": "^4.41.6"
   },
+  "resolutions": {
+    "static-eval": "^2.0.0"
+  },
   "engines": {
     "node": ">=12.x"
   }
