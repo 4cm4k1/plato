@@ -116,7 +116,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
     future: {
       excludeDefaultMomentLocales: true,
     },
-    generateInDevMode: true,
+    generateInDevMode: false,
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
     reactStrictMode: true,
     target: 'serverless',

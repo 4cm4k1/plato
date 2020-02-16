@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 // types
 import { NextPage } from 'next';
+// local
+import PageLayout from '../components/PageLayout';
 
 /**
  * render with SSRless dynamic import because `plotly.js` does not support SSR
@@ -12,12 +14,12 @@ const DynamicPlot = dynamic(import('../components/DynamicPlot'), {
 });
 
 const IndexPage: NextPage = () => (
-  <div>
+  <PageLayout>
     <Head>
       <title>Plato</title>
     </Head>
     <DynamicPlot />
-  </div>
+  </PageLayout>
 );
 
 export default IndexPage;

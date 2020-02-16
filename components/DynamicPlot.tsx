@@ -1,12 +1,17 @@
 // libraries
 import Plot from 'react-plotly.js';
+import { TextField } from '@rmwc/textfield';
+import { Fab } from '@rmwc/fab';
+import { useState } from 'preact/hooks';
 // types
 import {
   Color,
-  /*Config, Frame,*/ Layout as PlotLayout,
+  Config as PlotConfig,
+  /*Frame,*/ Layout as PlotLayout,
   PlotData,
   Transition,
 } from 'plotly.js';
+import { LoadableComponent } from 'next/dynamic';
 
 /**
  * Here we extend types from `@types/plotly.js` to add properties
@@ -18,6 +23,7 @@ interface UpdatedPlotData extends PlotData {
   color: Color;
   opacity: number;
 }
+type Config = Partial<PlotConfig>;
 type Data = Partial<UpdatedPlotData>;
 interface UpdatedPlotLayout extends PlotLayout {
   transition: Transition;
@@ -30,107 +36,99 @@ const repeat = (n: number) => (f: Function) => (x: number): any => {
   else return x;
 };
 
-const fillRandomizedArray = (
-  array: Array<number>,
-  lowerBound: number,
-  upperBound: number,
-) => (n: number) => {
-  return repeat(n)(
-    (x: number) => array.push(getRandomArbitrary(lowerBound, upperBound)) * x,
+const getRandomizedArray = (lowerBound: number, upperBound: number) => (
+  n: number,
+) => {
+  const array: Array<number> = [];
+  return repeat(n)(() =>
+    array.push(getRandomArbitrary(lowerBound, upperBound)),
   )(1);
 };
 
 const getRandomArbitrary = (min: number, max: number): number =>
   Math.random() * (max - min) + min;
 
-// data
-const x: Array<number> = [];
-const y: Array<number> = [];
-const z: Array<number> = [];
+const DynamicPlot: LoadableComponent = () => {
+  const handleClick = () => {
+    setX(getRandomizedArray(-4, 4)(vertexNumber));
+    setY(getRandomizedArray(-4, 4)(vertexNumber));
+    setZ(getRandomizedArray(-4, 4)(vertexNumber));
+  };
 
-// `react-plotly.js` config
-const data: Data[] = [
-  {
-    type: 'scatter3d',
-    mode: 'markers',
-    x: x,
-    y: y,
-    z: z,
-    marker: {
-      color: '#d50000',
-      size: 2,
-    },
-  },
-  {
-    alphahull: 0,
-    opacity: 0.5,
-    color: '#ff6e00',
-    type: 'mesh3d',
-    x: x,
-    y: y,
-    z: z,
-  },
-];
+  const [vertexNumber, setVertexNumber] = useState(12);
+  const [x, setX] = useState(getRandomizedArray(-4, 4)(vertexNumber));
+  const [y, setY] = useState(getRandomizedArray(-4, 4)(vertexNumber));
+  const [z, setZ] = useState(getRandomizedArray(-4, 4)(vertexNumber));
 
-const layout: Layout = {
-  autosize: true,
-  height: 480,
-  scene: {
-    aspectratio: {
-      x: 1,
-      y: 1,
-      z: 1,
-    },
-    camera: {
-      center: {
-        x: 0,
-        y: 0,
-        z: 0,
-      },
-      eye: {
-        x: 1.25,
-        y: 1.25,
-        z: 1.25,
-      },
-      up: {
-        x: 0,
-        y: 0,
-        z: 1,
-      },
-    },
-    xaxis: {
-      type: 'linear',
-      zeroline: true,
-    },
-    yaxis: {
-      type: 'linear',
-      zeroline: true,
-    },
-    zaxis: {
-      type: 'linear',
-      zeroline: true,
-    },
-  },
-  title: 'Plato',
-  width: 477,
-  transition: {
-    duration: 2000,
-    easing: 'cubic-in-out',
-  },
-};
-
-fillRandomizedArray(x, -4, 4)(12);
-fillRandomizedArray(y, -4, 4)(12);
-fillRandomizedArray(z, -4, 4)(12);
-
-console.info(
-  `Arrays filled!
+  console.info(
+    `Got arrays...
   x: ${x}
   y: ${y}
   z: ${z}
   `,
-);
+  );
 
-const DynamicPlot: React.FC = () => <Plot data={data} layout={layout} />;
+  // `react-plotly.js` config
+  const config: Config = {
+    displayModeBar: false,
+    responsive: true,
+  };
+
+  const data: Data[] = [
+    {
+      type: 'scatter3d',
+      mode: 'markers',
+      x: x,
+      y: y,
+      z: z,
+      marker: {
+        color: '#d50000',
+        size: 2,
+      },
+    },
+    {
+      alphahull: 0,
+      opacity: 0.5,
+      color: '#ff6e00',
+      type: 'mesh3d',
+      x: x,
+      y: y,
+      z: z,
+    },
+  ];
+
+  const layout: Layout = {
+    autosize: true,
+    title: 'Plato',
+    transition: {
+      duration: 2000,
+      easing: 'cubic-in-out',
+    },
+  };
+
+  return (
+    <>
+      <Plot
+        config={config}
+        data={data}
+        layout={layout}
+        useResizeHandler={true}
+        style={{ width: '100%', height: '100%' }}
+      />
+      <TextField
+        outlined
+        label='# of Vertices'
+        type='number'
+        value={vertexNumber}
+        onChange={evt => setVertexNumber(evt.currentTarget.value)}
+      />
+      <Fab
+        label='Render'
+        theme={['primaryBg', 'onPrimary']}
+        onClick={handleClick}
+      />
+    </>
+  );
+};
 
 export default DynamicPlot;
