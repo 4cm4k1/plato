@@ -62,7 +62,7 @@ const data: Data[] = [
     },
   },
   {
-    alphahull: -1,
+    alphahull: 0,
     opacity: 0.5,
     color: '#ff6e00',
     type: 'mesh3d',
