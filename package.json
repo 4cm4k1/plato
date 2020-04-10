@@ -25,20 +25,25 @@
     }
   },
   "dependencies": {
-    "next": "^9.2.2-canary.21",
-    "preact": "^10.3.2",
-    "preact-render-to-string": "^5.1.4",
+    "next": "^9.3.5-canary.6",
+    "preact": "^10.4.0",
+    "preact-render-to-string": "^5.1.6",
     "react": "github:preact-compat/react#1.0.0",
-    "react-dom": "github:preact-compat/react-dom#1.0.0",
-    "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1"
+    "react-dom": "github:preact-compat/react-dom#1.0.0"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^1.5.6-alpha.0",
-    "@next/bundle-analyzer": "^9.2.2-canary.21",
-    "@next/mdx": "^9.2.2-canary.21",
-    "@rmwc/fab": "^6.0.0-alpha.11",
-    "@rmwc/grid": "^6.0.0-alpha.11",
-    "@rmwc/textfield": "^6.0.0-alpha.11",
+    "@mdx-js/loader": "^1.5.8",
+    "@next/bundle-analyzer": "^9.3.5-canary.6",
+    "@next/mdx": "^9.3.5-canary.6",
+    "@rmwc/avatar": "^6.0.14",
+    "@rmwc/drawer": "^6.0.14",
+    "@rmwc/fab": "^6.0.14",
+    "@rmwc/grid": "^6.0.14",
+    "@rmwc/list": "^6.0.14",
+    "@rmwc/provider": "^6.0.14",
+    "@rmwc/textfield": "^6.0.14",
+    "@rmwc/theme": "^6.0.14",
+    "@rmwc/top-app-bar": "^6.0.14",
     "@types/node": "^13.7.1",
     "@types/plotly.js": "^1.44.28",
     "@types/react": "^16.9.19",
@@ -49,15 +54,12 @@
     "modern-normalize": "^0.6.0",
     "next-compose-plugins": "^2.2.0",
     "next-offline": "^5.0.0",
-    "plotly.js": "^1.52.2",
-    "prettier": "^1.19.1",
+    "plotly.js": "^1.53.0",
+    "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
     "react-plotly.js": "^2.4.0",
-    "typescript": "^3.7.5",
-    "webpack": "^4.41.6"
-  },
-  "resolutions": {
-    "static-eval": "^2.0.0"
+    "typescript": "^3.9.0-beta",
+    "webpack": "^4.42.1"
   },
   "engines": {
     "node": ">=12.x"
